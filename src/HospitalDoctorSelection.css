@@ -1,0 +1,108 @@
+/* General Styling */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to right, #d8a6ff, #9163cb);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 100vh; /* Use min-height to allow content to grow */
+  overflow-x: hidden; /* Remove horizontal scrollbar */
+  overflow-y: auto; /* Allow vertical scrolling */
+}
+
+/* Container */
+.container {
+  text-align: center;
+  width: 98%; /* Increased width for more space */
+  max-width: 5000px; /* Increased max-width for an even larger container */
+  padding-left: 80px; /* Increased left padding */
+  padding-right: 70px; /* Increased right padding */
+  padding-top: 200px; /* Increased top padding */
+  padding-bottom: 40px; /* Increased bottom padding */
+  background: linear-gradient(to right, #d8a6ff, #9163cb);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow-x: hidden; /* Remove horizontal scrollbar */
+  overflow-y: auto; /* Allow vertical scrolling */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center horizontally */
+  box-sizing: border-box; /* Ensures padding is included in the container size */
+  min-height: 1100px; /* Use min-height to allow content to grow */
+  border: none; /* Completely remove the border */
+}
+
+/* Title */
+.title {
+  font-size: 46px; /* Increased font size */
+  color: #333;
+  margin-bottom: 40px; /* Increased margin for more space below the title */
+  width: 100%;
+  text-align: center;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 100px; /* Increased gap between cards */
+  justify-items: center; /* Center cards horizontally within grid */
+  padding: 10px; /* Increased padding inside the grid */
+  border-radius: 8px;
+  background: linear-gradient(to right, #d8a6ff, #9163cb);
+  width: 100%;
+  max-width: 2800px;
+  min-height: 400px; /* Increased grid height */
+  align-items: center; /* Center cards vertically within grid */
+  box-sizing: border-box;
+  margin-top: 10px; /* Add some space at the top of the grid */
+}
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  text-align: center;
+  padding: 30px; /* Increased padding for cards */
+  width: 100%;
+  max-width: 400px; /* Increased max-width for cards */
+  margin: 0px 25px; /* Custom margin: 10px for top and bottom, 20px for left and right */
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-img {
+  width: 100%;
+  height: 350px; /* Increased image height */
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.card-title {
+  font-size: 26px; /* Increased font size */
+  color: #333;
+  margin: 10px 0; /* Increased margin for card title */
+}
+
+.card-subtitle {
+  font-size: 18px; /* Increased font size */
+  color: #666;
+}
+
+/* Error Message */
+.error {
+  color: red;
+  font-size: 28px; /* Increased font size */
+  text-align: center;
+  margin-top: 50px;
+}

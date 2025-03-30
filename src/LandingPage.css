@@ -1,0 +1,255 @@
+/* MAIN CONTAINER */
+.landing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px); /* Adjust height to account for navbar */
+    background: linear-gradient(to right, #d8a6ff, #9163cb);
+    margin-top: 200px; /* Add space between navbar and content */
+    padding: 400px 400px; /* Reduced padding for better responsiveness */
+    box-sizing: border-box;
+}
+
+/* Responsive Fix: Adjust layout for smaller screens */
+@media (max-width: 1024px) {
+    .landing-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        height: auto;
+        margin-top: 100px; /* Consistent margin across screen sizes */
+        padding: 60px 40px;
+    }
+}
+
+/* NAVIGATION BAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 50px;
+    border-radius: 10px;
+    position: fixed; /* Fix navbar at the top */
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 1200px;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    height: 60px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+    height: 30px;
+    line-height: 1;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.navbar ul li {
+    font-size: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Fix: Stack menu on small screens */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+/* AUTH BOX */
+.auth-box {
+    background: white;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+    max-width: 450px;
+}
+
+/* Responsive Fix: Adjust auth box for small screens */
+@media (max-width: 600px) {
+    .auth-box {
+        width: 90%;
+        max-width: 320px;
+    }
+}
+
+.auth-toggle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.auth-toggle button {
+    width: 48%;
+    padding: 12px;
+    border: none;
+    border-radius: 9px;
+    background: #a371d8;
+    color: white;
+    cursor: pointer;
+}
+
+.auth-toggle button.active {
+    background: #6b3ea5;
+}
+
+/* FORM */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* FORM BUTTON */
+form button {
+    width: 100%;
+    padding: 12px;
+    background: #6b3ea5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* WELCOME SECTION */
+.welcome-section {
+    margin-left: 50px;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Responsive Fix: Adjust welcome section for small screens */
+@media (max-width: 1024px) {
+    .welcome-section {
+        margin-left: 0;
+        margin-top: 20px;
+        max-width: 90%;
+    }
+}
+
+.welcome-section h3 {
+    color: beige;
+    font-size: 48px;
+}
+
+/* Responsive Fix: Adjust text size for mobile */
+@media (max-width: 600px) {
+    .welcome-section h1 {
+        font-size: 20px;
+    }
+}
+
+.welcome-section p {
+    color: white;
+    font-size: 20px;
+}
+
+/* Responsive Fix: Adjust text size for mobile */
+@media (max-width: 600px) {
+    .welcome-section p {
+        font-size: 14px;
+    }
+}
+
+/* GALLERY PREVIEW */
+.gallery-preview {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* Responsive Fix: Adjust gallery images */
+.gallery-preview img {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    margin: 0 5px;
+}
+
+@media (max-width: 600px) {
+    .gallery-preview img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* SECTIONS: HOME, ABOUT, FUNDRAISER */
+.section {
+    padding: 80px 10%;
+    text-align: center;
+    background: white;
+}
+
+.section:nth-child(even) {
+    background: #f3e8ff;
+}
+
+.section h2 {
+    font-size: 30px;
+    color: #6b3ea5;
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 18px;
+    color: #333;
+    max-width: 700px;
+    margin: auto;
+}
+
+/* Responsive Fix: Adjust sections for smaller screens */
+@media (max-width: 768px) {
+    .section {
+        padding: 50px 20px;
+    }
+
+    .section h2 {
+        font-size: 24px;
+    }
+
+    .section p {
+        font-size: 16px;
+    }
+}
