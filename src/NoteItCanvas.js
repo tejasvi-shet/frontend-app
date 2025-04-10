@@ -66,17 +66,83 @@ const NoteItCanvas = () => {
     setIsErasing(!isErasing);
   };
 
-  // Function to save the drawing as an image
+  // Function to save the drawing as an image with white background
   const saveDrawing = () => {
     if (!canvasRef.current) return;
+
+    // Get the original canvas
     const canvas = canvasRef.current.canvasContainer.children[1];
-    const dataUrl = canvas.toDataURL("image/png");
+    
+    // Create a new canvas for the full content
+    const textCanvas = document.createElement("canvas");
+    const textCtx = textCanvas.getContext("2d");
+
+    // Set the size of the new canvas (you can adjust these dimensions)
+    const width = 800;
+    const height = 600;
+    textCanvas.width = width;
+    textCanvas.height = height;
+
+    // Fill the background with white color
+    textCtx.fillStyle = "#ffffff"; // White background
+    textCtx.fillRect(0, 0, width, height); // Fill the canvas with white
+
+    // Draw the original canvas (drawing) to the new canvas
+    textCtx.drawImage(canvas, 0, 0, canvas.width, canvas.height);
+
+    // Draw the shapes over the canvas
+    shapes.forEach((shape) => {
+      textCtx.fillStyle = shape.fillColor;
+      textCtx.strokeStyle = color;
+      textCtx.lineWidth = brushSize;
+
+      if (shape.type === "rectangle" || shape.type === "square") {
+        textCtx.fillRect(shape.x, shape.y, shape.width, shape.height);
+        textCtx.strokeRect(shape.x, shape.y, shape.width, shape.height);
+      } else if (shape.type === "diamond") {
+        textCtx.beginPath();
+        textCtx.moveTo(shape.x, shape.y - shape.height / 2); // Top
+        textCtx.lineTo(shape.x - shape.width / 2, shape.y); // Left
+        textCtx.lineTo(shape.x, shape.y + shape.height / 2); // Bottom
+        textCtx.lineTo(shape.x + shape.width / 2, shape.y); // Right
+        textCtx.closePath();
+        textCtx.fill();
+        textCtx.stroke();
+      } else if (shape.type === "circle") {
+        textCtx.beginPath();
+        textCtx.arc(shape.x, shape.y, shape.radiusX, 0, 2 * Math.PI);
+        textCtx.fill();
+        textCtx.stroke();
+      } else if (shape.type === "oval") {
+        textCtx.beginPath();
+        textCtx.ellipse(shape.x, shape.y, shape.radiusX, shape.radiusY, 0, 0, 2 * Math.PI);
+        textCtx.fill();
+        textCtx.stroke();
+      } else if (shape.type === "triangle") {
+        textCtx.beginPath();
+        textCtx.moveTo(shape.x, shape.y);
+        textCtx.lineTo(shape.x + shape.width / 2, shape.y - shape.height);
+        textCtx.lineTo(shape.x + shape.width, shape.y);
+        textCtx.closePath();
+        textCtx.fill();
+        textCtx.stroke();
+      }
+    });
+
+    // Draw the text (note) over the canvas
+    if (note) {
+      textCtx.font = "20px Arial";
+      textCtx.fillStyle = "#000";
+      textCtx.fillText(note, 20, height - 30); // Position the text at the bottom
+    }
+
+    // Convert the complete canvas to an image URL and download it
+    const dataUrl = textCanvas.toDataURL("image/png");
     const link = document.createElement("a");
     link.href = dataUrl;
-    link.download = "drawing.png"; // File name for the saved image
+    link.download = "drawing_with_white_background.png"; // Name the file
     link.click();
   };
-
 
   // Function to draw a shape at the clicked position
   const drawShape = (e) => {
@@ -272,7 +338,8 @@ const NoteItCanvas = () => {
       <ellipse cx="12" cy="12" rx="10" ry="6" stroke="currentColor" strokeWidth="2" fill="none" />
     </svg>
   );
-const navigate = useNavigate();
+
+  const navigate = useNavigate();
 
   return (
     <div className="note-container">
@@ -409,7 +476,9 @@ const navigate = useNavigate();
         {/* Buttons for Save */}
         <div className="btn-group">
           <button onClick={saveDrawing}>Save Drawing</button>
+          <button onClick={() => navigate("/coloring")}>Coloring</button>
           <button onClick={() => navigate('/gallery')} >Go to Gallery</button>
+
         </div>
       </div>
     </div>
